@@ -406,8 +406,10 @@ public class dashboardController implements Initializable{
                     alert.showAndWait();
                 } else {
                     // Handle image path, use default if image path is not set
-                    String defaultImagePath = "src/resources/default.png";
-                    String imagePath = (getData.path != null) ? getData.path.replace("\\", "\\\\") : defaultImagePath;
+                    String defaultImagePath = "D:/project/InventoryManagementsystem/src/main/resources/default.png";
+                    String imagePath = (getData.path != null && !getData.path.isEmpty())
+                            ? getData.path.replace("\\", "/")
+                            : defaultImagePath;
 
                     // Prepare statement
                     prepear = connect.prepareStatement(sql);
