@@ -24,13 +24,15 @@ public class HelloApplication extends Application  {
         stage.getIcons().add(image);
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
         Scene scene = new Scene(root);
+        final double[] offsetX = {0};
+        final double[] offsetY = {0};
         root.setOnMousePressed((MouseEvent event) -> {
-            x= event.getSceneX();
-            y=event.getSceneY();
+            offsetX[0] = event.getSceneX();
+            offsetY[0] = event.getSceneY();
         });
         root.setOnMouseDragged((MouseEvent event) ->{
-            stage.setX(event.getScreenX()-x);
-            stage.setY((event.getSceneY()-y));
+            stage.setX(event.getScreenX() - offsetX[0]);
+            stage.setY(event.getScreenY() - offsetY[0]);
             stage.setOpacity(.8);
         });
         root.setOnMouseReleased((MouseEvent event)->{
