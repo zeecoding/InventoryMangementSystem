@@ -406,7 +406,7 @@ public class dashboardController implements Initializable{
                     alert.showAndWait();
                 } else {
                     // Handle image path, use default if image path is not set
-                    String defaultImagePath = "D:/project/InventoryManagementsystem/src/main/resources/default.png";
+                    String defaultImagePath = getClass().getResource("/default.png").getPath();
                     String imagePath = (getData.path != null && !getData.path.isEmpty())
                             ? getData.path.replace("\\", "/")
                             : defaultImagePath;
